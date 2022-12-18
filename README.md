@@ -5,8 +5,9 @@
 1.git clone https://github.com/jason3512/messageBoard.git  
 2.cd messageBoard  
 3.composer install  
-4.vim .env #修改資料庫  
-5.php artisan serve  
+4.vim .env //修改資料庫    
+5.php artisan migrate //建立table 
+6.php artisan serve  
 
 **取得全部留言**  
 ```php
