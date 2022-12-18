@@ -8,7 +8,7 @@ use App\Models\Message;
 
 class MessageController extends Controller
 {
-    public function index ()
+    public function msglist ()
     {   
         $messages = Message::select(
             'id',
@@ -18,8 +18,19 @@ class MessageController extends Controller
         )
             ->orderBy('created_at', 'DESC')
             ->get();
-    
-        return $messages;
+        if($messages){
+            $json = [
+                'ok' => true, 
+                'messages' => $messages
+            ];
+        }else {
+            $json = [
+                'ok' => false, 
+                'messages' => $messages
+            ];
+        }
+        
+        return $json;
     }
 
     public function create(Request $request)
@@ -50,6 +61,7 @@ class MessageController extends Controller
     public function update(Request $request, $msgid)
     {
         Message::where('id', $msgid)->update([
+            'member' => $request->member,
             'message' => $request->message,
         ]);
 
