@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => 'messages'], function () {
-    Route::get('/', 'App\Http\Controllers\MessageController@index');
+    Route::get('/', 'App\Http\Controllers\MessageController@msglist');
     Route::post('/', 'App\Http\Controllers\MessageController@create');
     Route::get('/{message_id}', 'App\Http\Controllers\MessageController@detail');
     Route::put('/{message_id}', 'App\Http\Controllers\MessageController@update');
